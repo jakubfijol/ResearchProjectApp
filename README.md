@@ -25,11 +25,11 @@ List the ready features here:
 
 
 ## Usage
-After download open project in Intellij IDEA and type this into terminal:
+After download, open project in Intellij IDEA and type this into terminal:
 
 `mvn spring-boot:run`
 
-Now you can open Postman enter this adress into request URL field:
+Now you can open Postman and enter this adress into request URL field:
 
 `http://localhost:8070/`
 
@@ -62,7 +62,7 @@ value`application/json`
 To edit some patient you must specify his id and use PUT or PATCH. 
 To DELETE patient type his id on the end of URL.
 
-This commands work with all five SQL tables.
+These commands work with all five SQL tables.
 In user table you can change user password with PATCH.
 In addition there is only one security option which prevents user from deleting other users.
 To delete user you must have admin status added in header.
