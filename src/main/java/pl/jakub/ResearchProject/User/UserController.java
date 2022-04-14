@@ -23,7 +23,6 @@ public class UserController {
         return userRepository.save(user);
     }
 
-
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody User user) {
         User userFromDb = userRepository.getByLogin(user.getLogin());
