@@ -1,6 +1,8 @@
 package pl.jakub.ResearchProject.PatientConsent;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.jakub.ResearchProject.LabTest.LabTest;
 
@@ -34,21 +36,21 @@ public class PatientConsentController {
     }
 
     @PutMapping("/{id}")
-    public int update(@PathVariable("id") int id, @RequestBody PatientConsent updatedPatientConsent) {
+    public ResponseEntity update(@PathVariable("id") int id, @RequestBody PatientConsent updatedPatientConsent) {
         PatientConsent patientConsent = patientConsentRepository.getById(id);
         if (patientConsent != null) {
             patientConsent.setProjectId(updatedPatientConsent.getProjectId());
             patientConsent.setPatientId(updatedPatientConsent.getPatientId());
             patientConsent.setConsent(updatedPatientConsent.getConsent());
             patientConsentRepository.update(patientConsent);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
     @PatchMapping("/{id}")
-    public int partiallyUpdate(@PathVariable("id") int id, @RequestBody PatientConsent updatedPatientConsent) {
+    public ResponseEntity partiallyUpdate(@PathVariable("id") int id, @RequestBody PatientConsent updatedPatientConsent) {
         PatientConsent patientConsent = patientConsentRepository.getById(id);
         if (patientConsent != null) {
             if (updatedPatientConsent.getProjectId() > 0)
@@ -57,9 +59,9 @@ public class PatientConsentController {
                 patientConsent.setPatientId(updatedPatientConsent.getPatientId());
             if (updatedPatientConsent.getConsent() > -1) patientConsent.setConsent(updatedPatientConsent.getConsent());
             patientConsentRepository.update(patientConsent);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

@@ -1,6 +1,8 @@
 package pl.jakub.ResearchProject.Patient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +30,7 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public int update(@PathVariable("id") int id, @RequestBody Patient updatedPatient) {
+    public ResponseEntity update(@PathVariable("id") int id, @RequestBody Patient updatedPatient) {
         Patient patient = patientRepository.getById(id);
         if (patient != null) {
             patient.setFirstname(updatedPatient.getFirstname());
@@ -36,14 +38,14 @@ public class PatientController {
             patient.setPesel(updatedPatient.getPesel());
             patient.setPhonenumber(updatedPatient.getPhonenumber());
             patientRepository.update(patient);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
     @PatchMapping("/{id}")
-    public int partiallyUpdate(@PathVariable("id") int id, @RequestBody Patient updatedPatient) {
+    public ResponseEntity partiallyUpdate(@PathVariable("id") int id, @RequestBody Patient updatedPatient) {
         Patient patient = patientRepository.getById(id);
         if (patient != null) {
             if (updatedPatient.getFirstname() != null) patient.setFirstname(updatedPatient.getFirstname());
@@ -51,9 +53,9 @@ public class PatientController {
             if (updatedPatient.getPesel() != null) patient.setPesel(updatedPatient.getPesel());
             if (updatedPatient.getPhonenumber() != null) patient.setPhonenumber(updatedPatient.getPhonenumber());
             patientRepository.update(patient);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

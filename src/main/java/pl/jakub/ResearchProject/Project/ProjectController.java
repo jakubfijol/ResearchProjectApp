@@ -1,6 +1,8 @@
 package pl.jakub.ResearchProject.Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,26 +30,26 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    public int update(@PathVariable("id") int id, @RequestBody Project updatedProject) {
+    public ResponseEntity update(@PathVariable("id") int id, @RequestBody Project updatedProject) {
         Project project = projectRepository.getById(id);
         if (project != null) {
             project.setName(updatedProject.getName());
             projectRepository.update(project);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
     @PatchMapping("/{id}")
-    public int partiallyUpdate(@PathVariable("id") int id, @RequestBody Project updatedProject) {
+    public ResponseEntity partiallyUpdate(@PathVariable("id") int id, @RequestBody Project updatedProject) {
         Project project = projectRepository.getById(id);
         if (project != null) {
             if (updatedProject.getName() != null) project.setName(updatedProject.getName());
             projectRepository.update(project);
-            return 1;
+            return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            return -1;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
