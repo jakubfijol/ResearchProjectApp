@@ -1,5 +1,5 @@
 # ResearchProjectApp
-> This is a backend app which helps manage research projects.
+> This is a backend app which helps to manage research projects.
 
 ## Table of Contents
 * [Technologies Used](#technologies-used)
