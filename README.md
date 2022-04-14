@@ -25,7 +25,7 @@ List the ready features here:
 
 
 ## Usage
-After download, open project in Intellij IDEA and type this into terminal:
+After download, go to project main folder in terminal and type this:
 
 `mvn spring-boot:run`
 
