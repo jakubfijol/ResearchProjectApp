@@ -25,7 +25,15 @@ List the ready features here:
 
 
 ## Usage
-After download, go to project main folder in terminal and type this:
+Firstly you must create a SQL database and set its url, username, password and port into `application.prosperites` file (src/main/resources).
+Then you must create new schema in SQL named `researchproject` and create tables:
+- `consent`
+- `labtest`
+- `patient`
+- `project`
+- `user`
+
+After downloading the project, go to its main folder in terminal and type this:
 
 `mvn spring-boot:run`
 
@@ -44,7 +52,7 @@ There are five main instructions to use:
 For example, sending this GET command returns you all patients from database:
 `http://localhost:8070/patients/`
 
-If you want to GET patient with specify id just type his id on the end of URL.
+If you want to GET patient with specify id just type its id on the end of URL.
 
 If you want to POST new patient you must send this command
 `http://localhost:8070/patients/`
@@ -59,7 +67,7 @@ and with header:
 key`Content-Type`
 value`application/json`
 
-To edit some patient you must specify his id and use PUT or PATCH. 
+To edit some patient you must specify his id and use PUT or PATCH.
 To DELETE patient type his id on the end of URL.
 
 These commands work with all five SQL tables.
