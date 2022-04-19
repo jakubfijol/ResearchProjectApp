@@ -25,17 +25,12 @@ List the ready features here:
 
 
 ## Usage
-Firstly you must create a SQL database and set its url, username, password and port into `application.prosperites` file (src/main/resources).
-Then you must create new schema in SQL named `researchproject` and create tables:
-- `consent`
-- `labtest`
-- `patient`
-- `project`
-- `user`
+Firstly you must create a local SQL  instance and set its url, username, password and port into `application.prosperites` file (src/main/resources).
+Then you must copy SQL schema named `researchproject` from `dataBase` folder.
 
-After downloading the project, go to its main folder in terminal and type this:
+After that you can simply run project (from main folder) in terminal:
 
-`mvn spring-boot:run`
+`java -jar target/ResearchProject-0.0.1-SNAPSHOT.jar`
 
 Now you can open Postman and enter this adress into request URL field:
 
@@ -50,6 +45,7 @@ There are five main instructions to use:
 - `users/`
 
 For example, sending this GET command returns you all patients from database:
+
 `http://localhost:8070/patients/`
 
 If you want to GET patient with specify id just type its id on the end of URL.
@@ -57,6 +53,7 @@ If you want to GET patient with specify id just type its id on the end of URL.
 If you want to POST new patient you must send this command
 `http://localhost:8070/patients/`
 with raw body:
+
 `[{
 "firstname": "...",
 "lastname": "...",
@@ -67,7 +64,10 @@ and with header:
 key`Content-Type`
 value`application/json`
 
-To edit some patient you must specify his id and use PUT or PATCH.
+To edit some patient you must specify his id and use PUT or PATCH, for example:
+
+`http://localhost:8070/patients/1`
+
 To DELETE patient type his id on the end of URL.
 
 These commands work with all five SQL tables.
