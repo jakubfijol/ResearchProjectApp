@@ -26,7 +26,7 @@ List the ready features here:
 
 ## Usage
 Firstly you must create a local SQL instance and set its hostname(localhost), port(3306), username(root), password(password). You can change defaults values in `application.prosperites` file (src/main/resources).
-Then you must import SQL schema named `researchproject` from `dataBase` folder.
+Then you must create SQL schema named `researchproject` and import tables from `dataBase` folder.
 
 After that you can simply run project (from main folder) in terminal:
 
