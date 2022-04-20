@@ -25,8 +25,8 @@ List the ready features here:
 
 
 ## Usage
-Firstly you must create a local SQL  instance and set its url, username, password and port into `application.prosperites` file (src/main/resources).
-Then you must copy SQL schema named `researchproject` from `dataBase` folder.
+Firstly you must create a local SQL instance and set its hostname(localhost), port(3306), username(root), password(password). You can change defaults values in `application.prosperites` file (src/main/resources).
+Then you must create SQL schema named `researchproject` and import tables from `dataBase` folder.
 
 After that you can simply run project (from main folder) in terminal:
 
@@ -74,5 +74,4 @@ These commands work with all five SQL tables.
 In user table you can change user password with PATCH.
 In addition there is only one security option which prevents user from deleting other users.
 To delete user you must have admin status added in header.
-
 
